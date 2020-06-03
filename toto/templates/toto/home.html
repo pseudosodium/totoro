@@ -1,0 +1,77 @@
+{% extends 'toto/header.html' %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% block content %}
+      {% if user.is_authenticated %}
+        <nav class="nav-extended">
+          <div class="nav-content" style="text-align:center">
+            <ul class="tabs tabs-transparent">
+              <li class="tab"><a class="active" href="#ask">Ask A Question</a></li>
+              <li class="tab"><a href="#ans">Your Answers</a></li>
+              <li class="tab"><a href="#ques">Your Questions</a></li>
+              <li class="tab"><a href="#feed">Feed</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div id="ask" class="col s12">
+          <div class="container">
+            <h1>Ask A Question, Feed your curiosity!</h1>
+            <p>Click <a href="ask">here</a> to ask a question!</p>
+          </div>
+        </div>
+        <div id="ans" class="col s12"><br>
+          <div class="container">
+            <p><i>Your answers appear here</i></p>
+            {% for a in ans %}
+              <ul class="collection">
+                <li class="collection-item">
+                  <strong>{{a.title}}</strong>
+                  <p>{{a.content}}</p>
+                  <p style="font-size:70%">Answered on: {{a.datePublished}}</p>
+                </li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+        <!--<div id="ques" class="col s12"><br>Your Questions appear <a href="/user_questions"><strong>here</strong></a>.</div>-->
+        <div id="ques" class="col s12">
+          <br>
+          <div class="container">
+            <p><i>Your questions appear here</i></p>
+            {% for q in ques %}
+              <ul class="collection">
+                <li class="collection-item">
+                  <a href="{{q.question_slug}}"><strong>{{q.title}}</strong></a>
+                  <p style="font-size:70%">Asked on: {{q.datePublished}}</p>
+                </li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+        <div id="feed" class="col s12">
+          <br>
+          <div class="container">
+            <p><i>Newly submitted questions appear here</i></p>
+            {% for q in allQues %}
+              <ul class="collection">
+                <li class="collection-item">
+                  <a href="{{q.question_slug}}"><strong>{{q.title}}</strong></a>
+                  <p style="font-size:70%">Asked on: {{q.datePublished}}</p>
+                </li>
+              </ul>
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        <div class="container">
+          <center><h1> <a href="/login"> <strong>Login</strong> </a> or <a href="/register"> <strong>Register</strong></a> to feed your curiosity.</h1></center>
+        </div>
+      {% endif %}
+    {% endblock %}
+  </body>
+</html>

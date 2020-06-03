@@ -1,0 +1,32 @@
+<head>
+  <meta charset="utf-8">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Fixing mobile icon -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  .main {
+    flex: 1 0 auto;
+  }
+  </style>
+</head>
+<body>
+  <div class="main">
+    {% include "toto/includes/navbar.html" %}
+    {% include "toto/includes/messages.html" %}
+    {% block content %}
+    {% endblock %}
+  </div>
+  {% include "toto/includes/footer.html" %}
+</body>
+<script src="{% static 'tinymce/js/prism.js' %}"></script>
+<script>M.AutoInit();</script>

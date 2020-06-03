@@ -1,0 +1,27 @@
+{% extends 'toto/header.html' %}
+
+{% block content %}
+<div class="container">
+  {% for q in ques %}
+    <h1>{{q.title}}</h1>
+    <p style='text-algin:right'>
+      {{q.datePublished}}
+      <a href="{{slug}}/ans_question" style="text-align:right"><strong>Answer</strong></a>
+      {% if user.is_authenticated and q.author == user %}
+        <a href="{{slug}}/delete_ques" style="color:red; text-align:right"><strong>Delete</strong></a>
+      {% endif %}
+    </p>
+    <hr>
+    <ul class="collection">
+      {% for a in ans %}
+        <li class="collection-item">
+          <p style="font-size:120%">{{a.content}}</p>
+          <p style='text-align:right; font-size:70%'>Answered by: {{a.author}}
+            <br>
+          On: {{a.datePublished}}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+{% endblock %}

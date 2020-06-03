@@ -1,0 +1,11 @@
+{% extends 'toto/header.html' %}
+
+{% block content %}
+  <div class="container">
+    <form  method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <center><button style="background-color:#F4EB16; color:black" class="btn btn-outline-info" type="submit">Submit Answer</button></center>
+    </form>
+  </div>
+{% endblock %}
