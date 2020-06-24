@@ -1,12 +1,19 @@
 {% extends 'toto/header.html' %}
 
 {% block content %}
+<br>
   <div class="container">
-    <form method="post">
-      {% csrf_token %}
-      {{form.as_p}}
-      <button style="background-color:#F4EB16; color:black" class="btn btn-outline-info" type="submit">Login</button>
-    </form>
-    If you don't already have an account <a href="/register" target="blank"><strong>register</strong></a> for a new account.
+    <center>
+    <div class="card" style="width: 50%">
+      <div class="card-content">
+        <form method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <button style="background-color:#F4EB16; color:black" class="btn btn-outline-info" type="submit">Login</button>
+        </form>
+        If you don't already have an account <a href="/register" target="blank"><strong>register</strong></a> for a new account.
+      </div>
+    </div>
+    </center>
   </div>
 {% endblock %}

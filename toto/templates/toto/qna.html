@@ -16,7 +16,7 @@
       {% for a in ans %}
         <li class="collection-item">
           <p style="font-size:120%">{{a.content}}</p>
-          <p style='text-align:right; font-size:70%'>Answered by: {{a.author}}
+          <p style='text-align:right; font-size:70%'>Answered by: <a href="profile/{{a.author}}">{{a.author}}</a>
             <br>
           On: {{a.datePublished}}</p>
         </li>

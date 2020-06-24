@@ -57,8 +57,8 @@ def logout_request(request):
     messages.success(request, "Logged out successfully!")
     return redirect("/")
 
-def view_profile(request):
-    return render(request, "toto/account.html", {"user":request.user})
+#def view_profile(request):
+#    return render(request, "toto/account.html", {"user":request.user})
 
 def ask_question(request):
     if request.method == 'POST':
@@ -106,3 +106,12 @@ def delete_ques(request, single_slug):
     Question.objects.filter(question_slug=single_slug).delete()
     messages.success(request, 'Question deleted successfully!')
     return redirect('/')
+
+
+def view_profile(request, user_name):
+    try:
+        userprofile = User.objects.get(username=user_name)
+        user_answers = Answer.objects.filter(author=userprofile).order_by('-datePublished')
+        return render(request, 'toto/account.html', {'userprofile':userprofile, 'user':request.user, 'answers': user_answers})
+    except:
+        return HttpResponse(f"<strong><i>{user_name}</i></strong> is not a registered user on this site!")
