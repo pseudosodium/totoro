@@ -1,8 +1,8 @@
 <nav class="nav-extended">
-    <div class="nav-wrapper">
-      <a href="/" class="brand-logo">ToToRo</a>
+    <div class="nav-wrapper" style="background: #000000">
+      <a href="/" class="brand-logo" style="font-family: 'Krona One', sans-serif;">ToToRo</a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right hide-on-med-and-down" style="font-family: 'Bungee', cursive;">
         <li><a href="/">Home</a></li>
         {% if user.is_authenticated %}
           <li><a href="/profile/{{user.username}}">{{user.username|title}}</a></li>

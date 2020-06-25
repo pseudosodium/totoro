@@ -115,3 +115,16 @@ def view_profile(request, user_name):
         return render(request, 'toto/account.html', {'userprofile':userprofile, 'user':request.user, 'answers': user_answers})
     except:
         return HttpResponse(f"<strong><i>{user_name}</i></strong> is not a registered user on this site!")
+
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+        username = request.user.username
+        if form.is_valid():
+            user = form.save()
+            messages.info(request, "Account Details Changed Successfully!")
+            return redirect(f'/profile/{request.user.username}')
+    else:
+        form = EditProfileForm(instance=request.user)
+        return render(request, "toto/edit.html", {"form":form})

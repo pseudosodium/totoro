@@ -1,9 +1,10 @@
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 from django.forms import ModelForm, Textarea
 from .models import *
 from django.db import models
+from tinymce.widgets import TinyMCE
 
 class NewUserForm(UserCreationForm):
     first_name = forms.CharField(max_length=50, required=True)
@@ -21,6 +22,15 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class EditProfileForm(UserChangeForm):
+    password = None
+    class Meta:
+        model = User
+        fields = {'first_name', 'last_name', 'email'}
+        exclude = {'password',}
+
 
 class QuestionForm(ModelForm):
     class Meta:
