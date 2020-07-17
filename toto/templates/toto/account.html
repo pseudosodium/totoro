@@ -19,7 +19,7 @@
       <li class="collection-item">
         <h5>{{ans.title}}</h5>
         <p style="font-size: 70%;">{{ans.datePublished}}</p>
-        <p>{{ans.content}}</p>
+        <p>{{ans.content|safe}}</p>
       </li>
       {% endfor %}
     </ul>
