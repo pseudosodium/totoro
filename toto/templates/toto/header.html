@@ -1,7 +1,8 @@
 <head>
   <meta charset="utf-8">
   {% load static %}
-  <link rel="stylesheet" href="{% static 'tinymce/css/prism.css' %}">
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+  <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -28,5 +29,4 @@
   </div>
   {% include "toto/includes/footer.html" %}
 </body>
-<script src="{% static 'tinymce/js/prism.js' %}"></script>
 <script>M.AutoInit();</script>

@@ -4,7 +4,6 @@ from django import forms
 from django.forms import ModelForm, Textarea
 from .models import *
 from django.db import models
-from tinymce.widgets import TinyMCE
 
 class NewUserForm(UserCreationForm):
     first_name = forms.CharField(max_length=50, required=True)
